@@ -1,0 +1,27 @@
+{
+  "name": "knex-graphql",
+  "version": "1.0.0",
+  "description": "This project is created to learn and implement the basics of knex.js and graphQl",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch '*.ts' --exec 'ts-node' src/index.ts"
+  },
+  "author": "Ayesha khan",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.8.0",
+    "knex": "^2.5.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.6.2",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
