@@ -1,8 +1,14 @@
+import BaseService from "../../globals/base-service";
 import { ISignupDto } from "./dto/signup.dto";
 import UserEntity from "./user.entity";
 
-export class UserService {
-    static async signup(payload: ISignupDto) {
+export class UserService extends BaseService {
+    
+    constructor() {
+        super(UserEntity())
+    }
+
+    async signup(payload: ISignupDto) {
         try {
             const userExisted = await UserEntity().where("email", payload.email).first();
 
@@ -16,8 +22,8 @@ export class UserService {
                 contact: payload.contact,
                 password: payload.password
             })
-            
-            return UserEntity().where("id", createdUserId[0]).first()
+
+            return this.findById(createdUserId[0]);
 
         } catch (error) {
             throw error

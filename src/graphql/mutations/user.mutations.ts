@@ -13,5 +13,5 @@ export const SignupMutation = {
         contact: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) },
     },
-    resolve: (parent: any, args: ISignupDto) => UserService.signup(args)
+    resolve: (parent: any, args: ISignupDto) => new UserService().signup(args)
 }

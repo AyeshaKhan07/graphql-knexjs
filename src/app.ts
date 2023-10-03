@@ -3,6 +3,7 @@ import { startStandaloneServer } from '@apollo/server/standalone'
 
 import schema from "./graphql";
 import { ApolloServer } from "@apollo/server";
+import authenticationMiddleware from "./middlewares/authentication";
 
 class App {
     public app: express.Application;
@@ -16,8 +17,14 @@ class App {
     }
 
     public async listen() {
-        const server = new ApolloServer({ schema });
-        const { url } = await startStandaloneServer(server, { listen: { port: this.port } });
+        const server = new ApolloServer({
+            schema, plugins: [{
+                requestDidStart: authenticationMiddleware
+            }]
+        });
+        const { url } = await startStandaloneServer(server, {
+            listen: { port: this.port },
+        });
 
         console.log(`🚀 Server listening at: ${url}`);
     }
